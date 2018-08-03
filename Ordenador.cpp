@@ -51,7 +51,7 @@ void OrdenarShellAsc(int * vec, int n)
 		{
 			int j = 0;														// Variable que mantiene la posicion hacia atras de i
 			int aux = vec[i];												// Guarda aux = a[i]; aux = 7
-			for (j = i; j >= salto && vec[j - salto] > aux ; j -= salto)	// j = i ; j = 5;  j >= salto ; 5 >= 5; a[5 - 5 = 0] > 7; 54 > 7; Verifica
+			for (j = i; j >= salto && vec[j - salto] > aux ; j -= salto)	// j = i ; j = 5;  j >= salto ; 5 >= 5; a[5 - 5 = 0] > 7; 54 > 7
 			{
 				vec[j] = vec[j - salto];									// Intercambia a[5] = a[5 - 5]; a[10] = {54,4,78,47,6,54,45,74,15,35}; j -= salto; j = 5 - 5 = 0
 			}
