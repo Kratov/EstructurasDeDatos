@@ -92,5 +92,10 @@ int main(int argc, char* argv[])
 
 	} while (op != 4);
 
+	if (vector != NULL) {
+		delete[] vector;
+		vector = NULL;
+	}
+
 	return 0;
 }
