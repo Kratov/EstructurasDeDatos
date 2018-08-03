@@ -34,14 +34,14 @@ void CargarVectorConsola(int *& vec, int & n)
 	}
 }
 
-void LeerVectorConsola(const int * vec, int n)
+void LeerVectorConsola(const int * vec, const int n)
 {
 	//Usa el espacio de nombre para la funcion
 	using namespace std;
 	
-	cout << "Arreglo {";
+	cout << endl << "Arreglo {";
 	for (int i = 0; i < n; i++){
 		cout << " " << *(vec + i);
 	}
-	cout << " }" << endl;
+	cout << " }" << endl << endl;
 }

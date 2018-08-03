@@ -7,7 +7,7 @@ void OrdenarSeleccionAsc(int * vec, int n)
 	{
 		min = i;
 		//Se Seleccion el menor numero del arreglo y se guarda
-		for (int j = i + 1; j < 7; j++)
+		for (int j = i + 1; j < n; j++)
 			if (vec[j] < vec[min])
 				min = j;
 
