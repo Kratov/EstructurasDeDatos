@@ -34,7 +34,7 @@ void CargarVectorConsola(int *& vec, int & n)
 		//Motor random
 		random_device rd;									//Semilla
 		mt19937 motor(rd());								//Motor randomico
-		uniform_int_distribution<int> rand(1, 1000);			//Rango del random
+		uniform_int_distribution<int> rand(1, 100);			//Rango del random
 		*(vec + i) = rand(motor);							//Llena elemento vector
 	}
 }
