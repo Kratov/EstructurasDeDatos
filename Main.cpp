@@ -12,8 +12,8 @@ int MenuPrincipal()
 	cout << "MENU DE METODOS DE ORDENAMIENTO" << endl;
 	cout << "1.Cargar Vector Random" << endl;
 	cout << "2.Metodos de ordenamiento" << endl;
-	cout << "4.Salir" << endl;
-	cout << "Selección: ";
+	cout << "0.Salir" << endl;
+	cout << "Seleccion: ";
 
 	//Seleccion del usuario
 	int aux;
@@ -30,10 +30,10 @@ int MenuOrdenamiento()
 
 	//Menu
 	cout << "1.Metodo Burbuja" << endl;
-	cout << "2.Metodo Selección" << endl;
+	cout << "2.Metodo Seleccion" << endl;
 	cout << "3.Metodo Shell" << endl;
 	cout << "4.Metodo QuickSort" << endl;
-	cout << "Selección: ";
+	cout << "Seleccion: ";
 
 	//Seleccion del usuario
 	int aux;
@@ -82,13 +82,15 @@ int main(int argc, char* argv[])
 							OrdenarShellAsc(vector, longitud);
 							break;
 						case 4:
+							 
+							 OrdenarQuickSortAsc(vector, 0, (longitud-1));
 							break;
 					}
 				}
 				break;
 		}
 
-	} while (op != 4);
+	} while (op != 0);
 
 	if (vector != NULL) {
 		delete[] vector;
