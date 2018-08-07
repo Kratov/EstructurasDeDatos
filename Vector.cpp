@@ -7,7 +7,7 @@ void CargarVectorConsola(int *& vec, int & n)
 	//Usa el espacio de nombre para la funcion
 	using namespace std;
 
-	cout << "Ingrese el tamaño del arreglo: ";
+	cout << "Ingrese el tamano del arreglo: ";
 	cin >> n;
 
 	//Retorna si existe error en buffer cin
