@@ -66,7 +66,7 @@ void OrdenarQuickSortAsc(int* vec, int izqui, int derech)
 	//menores parte izq, mayores parte derecha
 	int aux, i = izqui, j = derech; //variable aux, variables i y j de recorrido
 	int pivote = vec[(izqui + derech) / 2]; // pivote = al numero de la mitad del arreglo
-	while (i <= j) 
+	while (i < j) 
 	{
 		while (vec[i] < pivote) 
 			i++; // mientras vec[izq] < al pivote, i aumenta de recorrido sin hacer cambio
