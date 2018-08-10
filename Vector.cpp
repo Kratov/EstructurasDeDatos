@@ -2,7 +2,9 @@
 #include <iostream>
 #include <random>
 
-void CargarVectorConsola(int *& vec, int & n)
+
+
+void cargarVectorConsola(int *& vec, int & n)
 {
 	//Usa el espacio de nombre para la funcion
 	using namespace std;
@@ -31,15 +33,17 @@ void CargarVectorConsola(int *& vec, int & n)
 
 	for (int  i = 0; i < n; i++)
 	{
-		//Motor random
-		random_device rd;									//Semilla
-		mt19937 motor(rd());								//Motor randomico
-		uniform_int_distribution<int> rand(1, 100);			//Rango del random
-		*(vec + i) = rand(motor);							//Llena elemento vector
+		////Motor random
+		//random_device rd;									//Semilla
+		//mt19937 motor(rd());								//Motor randomico
+		//uniform_int_distribution<int> rand(1, 100);			//Rango del random
+		//*(vec + i) = rand(motor);							//Llena elemento vector
+		cout << "Ingrese el valor " << i << ": ";
+		cin >> vec[i];
 	}
 }
 
-void LeerVectorConsola(const int * vec, const int n)
+void leerVectorConsola(const int * vec, const int n)
 {
 	//Usa el espacio de nombre para la funcion
 	using namespace std;
