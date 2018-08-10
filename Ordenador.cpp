@@ -7,7 +7,8 @@ const char * TiposOrden[] = {
 	"Burbuja",
 	"Seleccion",
 	"Shell",
-	"QuickSort"
+	"QuickSort",
+	"QuickSort2"
 };
 
 void mostrarIntercambios(const int nItercambio, const Ordenamiento tipoOrdenamiento)
@@ -115,8 +116,40 @@ Ordenamiento ordenarQuickSortAsc(int * vec, const int inicio, const int fin, int
 		/*Usamos recursividad para que el ordenamiento se efectue mientras sea necesario*/
 		ordenarQuickSortAsc(vec, inicio, pIndice - 1, iteraciones);
 		ordenarQuickSortAsc(vec, pIndice + 1, fin, iteraciones);
+		
 	}
-
 	return Ordenamiento::quicksort;
+}
+
+Ordenamiento ordenarQuickSortAsc2(int* vec, const int inicio, const int fin, int * iteraciones)
+{
+	//menores parte izq, mayores parte derecha
+	int aux, i = inicio, j = fin; //variable aux, variables i y j de recorrido
+	int pivote = vec[(inicio + fin) / 2]; // pivote = al numero de la mitad del arreglo
+	while (i <= j)
+	{
+		while (vec[i] < pivote)
+			i++; // mientras vec[izq] < al pivote, i aumenta de recorrido sin hacer cambio
+
+		while (vec[j] > pivote)
+			j--; // mientras vec[derech] > al pivote, j aumenta de recorrido sin hacer cambio
+
+		if (i <= j)
+		{
+			aux = vec[i]; // guardamos al mayor
+			vec[i] = vec[j]; // lo cambiamos a la derecha
+			vec[j] = aux;// el menor lo movemos a la izquierda
+			i++;	// aumentamos el recorrido de las variables
+			j--;
+			*iteraciones += 1;
+		}
+	}
+	/*Usamos recursividad para que el ordenamiento se efectue mientras sea necesario*/
+	if (inicio < j)
+		ordenarQuickSortAsc2(vec, inicio, j, iteraciones);
+	if (i < fin)
+		ordenarQuickSortAsc2(vec, i, fin, iteraciones);
+
+	return Ordenamiento::quicksort2;
 }
 

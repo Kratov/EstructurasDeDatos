@@ -33,6 +33,7 @@ int menuOrdenamiento()
 	cout << "2.Metodo Seleccion" << endl;
 	cout << "3.Metodo Shell" << endl;
 	cout << "4.Metodo QuickSort" << endl;
+	cout << "5.Metodo QuickSort 2" << endl;
 	cout << "Seleccion: ";
 
 	//Seleccion del usuario
@@ -79,6 +80,7 @@ int main(int argc, char * argv[])
 					leerVectorConsola(vector, longitud);
 					if (ultimoOrdenameintoExe != Ordenamiento::ninguno)
 						mostrarIntercambios(intercambios, ultimoOrdenameintoExe);
+					intercambios = 0;
 					op = menuOrdenamiento();
 					switch (op)
 					{
@@ -93,6 +95,9 @@ int main(int argc, char * argv[])
 							break;
 						case 4:
 							ultimoOrdenameintoExe = ordenarQuickSortAsc(vector, 0, (longitud-1), &intercambios);
+							break;
+						case 5:
+							ultimoOrdenameintoExe = ordenarQuickSortAsc2(vector, 0, (longitud - 1), &intercambios);
 							break;
 					}
 				}
