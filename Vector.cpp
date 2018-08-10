@@ -2,7 +2,9 @@
 #include <iostream>
 #include <random>
 
-void CargarVectorConsola(int *& vec, int & n)
+
+
+void cargarVectorConsola(int *& vec, int & n)
 {
 	//Usa el espacio de nombre para la funcion
 	using namespace std;
@@ -39,7 +41,7 @@ void CargarVectorConsola(int *& vec, int & n)
 	}
 }
 
-void LeerVectorConsola(const int * vec, const int n)
+void leerVectorConsola(const int * vec, const int n)
 {
 	//Usa el espacio de nombre para la funcion
 	using namespace std;

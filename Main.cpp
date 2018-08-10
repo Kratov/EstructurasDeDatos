@@ -2,7 +2,7 @@
 #include "Ordenador.h"
 #include "Vector.h"
 
-int MenuPrincipal() 
+int menuPrincipal() 
 {
 
 	//Define espacio de nombre para la función
@@ -22,7 +22,7 @@ int MenuPrincipal()
 
 }
 
-int MenuOrdenamiento()
+int menuOrdenamiento()
 {
 
 	//Define espacio de nombre para la función
@@ -42,7 +42,7 @@ int MenuOrdenamiento()
 
 }
 
-int main(int argc, char* argv[]) 
+int main(int argc, char * argv[]) 
 {
 	// Numero de salida
 	int op = 4;
@@ -50,40 +50,49 @@ int main(int argc, char* argv[])
 	//Arreglo dinamico
 	int longitud = 0;
 	int * vector = NULL;
+	Ordenamiento ultimoOrdenameintoExe = Ordenamiento::ninguno;
+
+	//Cuenta iteraciones de los ordenamientos
+	int intercambios = 0;
 
 	do
 	{
 		system("cls");
 		//Muestra vector si este existe
-		if (vector != NULL)
-			LeerVectorConsola(vector, longitud);
+		if (vector != NULL) 
+			leerVectorConsola(vector, longitud);
+		if (ultimoOrdenameintoExe != Ordenamiento::ninguno)
+			mostrarIntercambios(intercambios, ultimoOrdenameintoExe);	
 
 		//Muestra menu y retorna selección
-		op = MenuPrincipal();
+		op = menuPrincipal();
 		switch (op)
 		{
 			case 1:
-				CargarVectorConsola(vector, longitud);
+				cargarVectorConsola(vector, longitud);
+				ultimoOrdenameintoExe = Ordenamiento::ninguno;
+				intercambios = 0;
 				break;
 			case 2:
 				if (vector != NULL) {
 					system("cls");
-					LeerVectorConsola(vector, longitud);
-					op = MenuOrdenamiento();
+					leerVectorConsola(vector, longitud);
+					if (ultimoOrdenameintoExe != Ordenamiento::ninguno)
+						mostrarIntercambios(intercambios, ultimoOrdenameintoExe);
+					op = menuOrdenamiento();
 					switch (op)
 					{
 						case 1:
-							OrdenarBurbujaAsc(vector, longitud);
+							ultimoOrdenameintoExe = ordenarBurbujaAsc(vector, longitud, &intercambios);
 							break;
 						case 2:
-							OrdenarSeleccionAsc(vector, longitud);
+							ultimoOrdenameintoExe = ordenarSeleccionAsc(vector, longitud, &intercambios);
 							break;
 						case 3:
-							OrdenarShellAsc(vector, longitud);
+							ultimoOrdenameintoExe = ordenarShellAsc(vector, longitud, &intercambios);
 							break;
 						case 4:
-							 
-							 OrdenarQuickSortAsc(vector, 0, (longitud-1));
+							ultimoOrdenameintoExe = ordenarQuickSortAsc(vector, 0, (longitud-1), &intercambios);
 							break;
 					}
 				}
