@@ -10,13 +10,6 @@ enum Ordenamiento
 	OrdenamientoQuicksort2
 };
 
-enum Busqueda
-{
-	BusquedaNinguno,
-	BusquedaLineal,
-	BusquedaBinaria
-};
-
 
 void mostrarIntercambios(const int nItercambio, const Ordenamiento tipoOrdenamiento);
 Ordenamiento ordenarSeleccionAsc(int * vec, const int n, int * iteraciones);

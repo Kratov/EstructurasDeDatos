@@ -11,17 +11,11 @@ const char * TiposOrden[] = {
 	"QuickSort2"
 };
 
-const char * TiposBusqueda[] = {
-	"",
-	"Lineal",
-	"Binaria"
-};
-
 
 void mostrarIntercambios(const int nItercambio, const Ordenamiento tipoOrdenamiento)
 {
 	using namespace std;
-	cout << "Iteraciones de ordenamiento " << TiposOrden[tipoOrdenamiento] << ": " << nItercambio << endl << endl;
+	cout <<"("<< TiposOrden[tipoOrdenamiento] <<") Iteraciones "<< ": " << nItercambio << endl << endl;
 }
 
 Ordenamiento ordenarSeleccionAsc(int * vec, const int n, int * iteraciones)

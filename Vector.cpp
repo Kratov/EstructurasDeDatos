@@ -19,7 +19,7 @@ void crearVectorConsola(int *& vec, int & n)
 		cin.clear();
 		cin.ignore();
 		cout << "Ingreso un valor invalido." << endl;
-		return;
+		crearVectorConsola(vec, n);
 	}
 
 	cout << endl;
