@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Ordenador.h"
+#include "Buscador.h"
 #include "Vector.h"
 
 int menuPrincipal() 
@@ -9,7 +10,7 @@ int menuPrincipal()
 	using namespace std;
 
 	//Menu
-	cout << "PROGRAMA DE ESTRUCTURA DE DATOS" << endl;
+	cout << endl << "PROGRAMA DE ESTRUCTURA DE DATOS" << endl;
 	cout << "1.Cargar Vector" << endl;
 	cout << "2.Metodos de ordenamiento" << endl;
 	cout << "3.Metodos de busqueda" << endl;
@@ -19,8 +20,15 @@ int menuPrincipal()
 	//Seleccion del usuario
 	int aux;
 	cin >> aux;
-	return aux;
 
+	if (cin.fail())
+	{
+		cin.clear();
+		cin.ignore();
+		return -1;
+	}
+
+	return aux;
 }
 
 int menuOrdenamiento()
@@ -30,7 +38,7 @@ int menuOrdenamiento()
 	using namespace std;
 
 	//Menu
-	cout << "Metodos de ordenamiento: " << endl;
+	cout << endl << "Metodos de ordenamiento: " << endl;
 	cout << "1.Metodo Burbuja" << endl;
 	cout << "2.Metodo Seleccion" << endl;
 	cout << "3.Metodo Shell" << endl;
@@ -41,6 +49,14 @@ int menuOrdenamiento()
 	//Seleccion del usuario
 	int aux;
 	cin >> aux;
+
+	if (cin.fail())
+	{
+		cin.clear();
+		cin.ignore();
+		return -1;
+	}
+
 	return aux;
 
 }
@@ -52,7 +68,7 @@ int menuIngresoVector()
 	using namespace std;
 
 	//Menu
-	cout << "Carga del vector: " << endl;
+	cout << endl << "Carga del vector: " << endl;
 	cout << "1.Automatico" << endl;
 	cout << "2.Manual" << endl;
 	cout << "Seleccion: ";
@@ -60,6 +76,13 @@ int menuIngresoVector()
 	//Seleccion del usuario
 	int aux;
 	cin >> aux;
+	if (cin.fail())
+	{
+		cin.clear();
+		cin.ignore();
+		return -1;
+	}
+
 	return aux;
 
 }
@@ -71,7 +94,7 @@ int menuBusqueda()
 	using namespace std;
 
 	//Menu
-	cout << "Metodos de busqueda: " << endl;
+	cout << endl << "Metodos de busqueda: " << endl;
 	cout << "1.Lineal" << endl;
 	cout << "2.Binaria" << endl;
 	cout << "Seleccion: ";
@@ -79,6 +102,13 @@ int menuBusqueda()
 	//Seleccion del usuario
 	int aux;
 	cin >> aux;
+	if (cin.fail())
+	{
+		cin.clear();
+		cin.ignore();
+		return -1;
+	}
+
 	return aux;
 
 }
@@ -92,10 +122,15 @@ int main(int argc, char * argv[])
 	int longitud = 0;
 	int * vector = NULL;
 	int * cVector = NULL;
+	//Ultimo(a) ordenamiento, busqueda ejecutada
 	Ordenamiento ultimoOrdenameintoExe = Ordenamiento::OrdenamientoNinguno;
 	Busqueda ultimaBusquedaExe = Busqueda::BusquedaNinguno;
 	//Cuenta iteraciones de los ordenamientos
 	int intercambios = 0;
+	//Resultados busquedas
+	int indiceEncontrado = -1;
+	int nComparaciones = 0;
+	int elemetoBuscar = 0;
 
 	do
 	{
@@ -107,7 +142,7 @@ int main(int argc, char * argv[])
 			leerVectorConsola(vector, longitud);
 		}
 		//Muestra numero de intercambios Y y copia del vector ordenada
-		if (ultimoOrdenameintoExe != Ordenamiento::OrdenamientoNinguno) {
+		if (ultimoOrdenameintoExe != Ordenamiento::OrdenamientoNinguno && op >= 0) {
 			using namespace std;
 			cout << "------------------------------------------------" << endl;
 			cout << "Resultados ordenamiento: " << endl;
@@ -118,11 +153,12 @@ int main(int argc, char * argv[])
 		}
 
 		//Muestra numero de intercambios Y y copia del vector ordenada
-		if (ultimaBusquedaExe != Busqueda::BusquedaNinguno) {
+		if (ultimaBusquedaExe != Busqueda::BusquedaNinguno && op >= 0) {
 			using namespace std;
 			cout << "------------------------------------------------" << endl;
 			cout << "Resultados busqueda: " << endl;
-			
+			mostrarIndiceEncontrado(indiceEncontrado, ultimaBusquedaExe);
+			mostrarNumeroComparaciones(nComparaciones, ultimaBusquedaExe);
 			cout << "------------------------------------------------" << endl;
 		}
 
@@ -135,7 +171,7 @@ int main(int argc, char * argv[])
 				ultimoOrdenameintoExe = Ordenamiento::OrdenamientoNinguno;
 				ultimaBusquedaExe = Busqueda::BusquedaNinguno;
 				intercambios = 0;
-				switch (menuIngresoVector())
+				switch (op = menuIngresoVector())
 				{
 					case 1:
 						cargarVectorAutomatico(vector, longitud);
@@ -154,9 +190,10 @@ int main(int argc, char * argv[])
 						cout << endl << "Vector original:" << endl;
 					}
 					leerVectorConsola(vector, longitud);
+					ultimaBusquedaExe = Busqueda::BusquedaNinguno;
 					intercambios = 0;
 					
-					switch (menuOrdenamiento())
+					switch (op = menuOrdenamiento())
 					{
 						case 1:
 							ultimoOrdenameintoExe = ordenarBurbujaAsc(cVector, longitud, &intercambios);
@@ -183,14 +220,17 @@ int main(int argc, char * argv[])
 						using namespace std;
 						cout << endl << "Vector original:" << endl;
 					}
-
-					switch (menuBusqueda())
+					leerVectorConsola(vector, longitud);
+					ultimoOrdenameintoExe = Ordenamiento::OrdenamientoNinguno;
+					leerElementoBuscar(elemetoBuscar);
+					switch (op = menuBusqueda())
 					{
 						case 1:
-							
+							ultimaBusquedaExe = busquedaLineal(cVector, longitud, elemetoBuscar, nComparaciones, indiceEncontrado);
 							break;
 						case 2:
-						
+							ordenarQuickSortAsc2(cVector, 0, (longitud - 1), &intercambios);
+							ultimaBusquedaExe = busquedaBinaria(cVector, longitud, elemetoBuscar, nComparaciones, indiceEncontrado);
 							break;
 					}
 				}
