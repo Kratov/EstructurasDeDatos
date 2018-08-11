@@ -29,17 +29,19 @@ void cargarVectorConsola(int *& vec, int & n)
 	}
 
 	//Declara el arreglo dinamico
-	vec = (int *) malloc(n * sizeof(int));
+	if (vec == NULL)
+		vec = (int *)malloc(n * sizeof(int));
+	
 
 	for (int  i = 0; i < n; i++)
 	{
-		////Motor random
-		//random_device rd;									//Semilla
-		//mt19937 motor(rd());								//Motor randomico
-		//uniform_int_distribution<int> rand(1, 100);			//Rango del random
-		//*(vec + i) = rand(motor);							//Llena elemento vector
-		cout << "Ingrese el valor " << i << ": ";
-		cin >> vec[i];
+		//Motor random
+		random_device rd;									//Semilla
+		mt19937 motor(rd());								//Motor randomico
+		uniform_int_distribution<int> rand(1, 100);			//Rango del random
+		*(vec + i) = rand(motor);							//Llena elemento vector
+		/*cout << "Ingrese el valor " << i << ": ";
+		cin >> vec[i];*/
 	}
 }
 
@@ -53,4 +55,19 @@ void leerVectorConsola(const int * vec, const int n)
 		cout << " " << *(vec + i);
 	}
 	cout << " }" << endl << endl;
+}
+
+void copiarVector(const int * origen, int *& destino, const int longitud)
+{
+	if (destino != NULL) {
+		delete[] destino;
+		destino = NULL;
+	}
+
+	if (destino	== NULL)
+		destino = (int *)malloc(longitud * sizeof(int));
+
+	for (int i = 0; i < longitud; i++)
+		*(destino + i) = *(origen + i);
+	
 }
