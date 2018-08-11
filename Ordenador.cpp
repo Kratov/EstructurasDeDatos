@@ -19,10 +19,9 @@ void mostrarIntercambios(const int nItercambio, const Ordenamiento tipoOrdenamie
 
 Ordenamiento ordenarSeleccionAsc(int * vec, const int n, int * iteraciones)
 {
-	int min;
 	for (int i = 0; i < n; i++)
 	{
-		min = i;
+		int min = i;
 		//Se Seleccion el menor numero del arreglo y se guarda
 		for (int j = i + 1; j < n; j++)
 			if (vec[j] < vec[min]) {
@@ -124,7 +123,7 @@ Ordenamiento ordenarQuickSortAsc(int * vec, const int inicio, const int fin, int
 Ordenamiento ordenarQuickSortAsc2(int* vec, const int inicio, const int fin, int * iteraciones)
 {
 	//menores parte izq, mayores parte derecha
-	int aux, i = inicio, j = fin; //variable aux, variables i y j de recorrido
+	int i = inicio, j = fin; //variable aux, variables i y j de recorrido
 	int pivote = vec[(inicio + fin) / 2]; // pivote = al numero de la mitad del arreglo
 	while (i <= j)
 	{
@@ -136,7 +135,7 @@ Ordenamiento ordenarQuickSortAsc2(int* vec, const int inicio, const int fin, int
 
 		if (i <= j)
 		{
-			aux = vec[i]; // guardamos al mayor
+			int aux = vec[i]; // guardamos al mayor
 			vec[i] = vec[j]; // lo cambiamos a la derecha
 			vec[j] = aux;// el menor lo movemos a la izquierda
 			i++;	// aumentamos el recorrido de las variables
