@@ -48,6 +48,7 @@ Busqueda busquedaLineal(const int * vec, const int longitud, const int nBuscar, 
 
 Busqueda busquedaBinaria(const int * vec, const int inicio, const int fin, const int nBuscar, int & nComparaciones, int & indiceEncontrado)
 {
+	//Divide longitud 2
 	int indiceMedio = (inicio + fin) / 2;
 	if (inicio <= fin)
 	{
