@@ -24,6 +24,7 @@
     <ClCompile Include="Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Main.h" />
     <ClInclude Include="Ordenador.h" />
     <ClInclude Include="Vector.h" />
   </ItemGroup>
