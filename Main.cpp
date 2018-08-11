@@ -136,7 +136,7 @@ int main(int argc, char * argv[])
 	{
 		system("cls");
 		//Muestra vector si este existe
-		if (vector != NULL) {
+		if (vector != NULL && op >= 0) {
 			using namespace std;
 			cout << endl << "Vector original:" << endl;
 			leerVectorConsola(vector, longitud);
@@ -157,6 +157,7 @@ int main(int argc, char * argv[])
 			using namespace std;
 			cout << "------------------------------------------------" << endl;
 			cout << "Resultados busqueda: " << endl;
+			cout << endl << "Elemento buscado: " << elemetoBuscar << endl << endl;
 			mostrarIndiceEncontrado(indiceEncontrado, ultimaBusquedaExe);
 			mostrarNumeroComparaciones(nComparaciones, ultimaBusquedaExe);
 			cout << "------------------------------------------------" << endl;
@@ -220,6 +221,8 @@ int main(int argc, char * argv[])
 						using namespace std;
 						cout << endl << "Vector original:" << endl;
 					}
+					nComparaciones = 0;
+					indiceEncontrado = -1;
 					leerVectorConsola(vector, longitud);
 					ultimoOrdenameintoExe = Ordenamiento::OrdenamientoNinguno;
 					leerElementoBuscar(elemetoBuscar);
@@ -229,8 +232,8 @@ int main(int argc, char * argv[])
 							ultimaBusquedaExe = busquedaLineal(cVector, longitud, elemetoBuscar, nComparaciones, indiceEncontrado);
 							break;
 						case 2:
-							ordenarQuickSortAsc2(cVector, 0, (longitud - 1), &intercambios);
-							ultimaBusquedaExe = busquedaBinaria(cVector, longitud, elemetoBuscar, nComparaciones, indiceEncontrado);
+							ultimoOrdenameintoExe = ordenarQuickSortAsc2(cVector, 0, (longitud - 1), &intercambios);
+							ultimaBusquedaExe = busquedaBinaria(cVector, 0 ,(longitud - 1), elemetoBuscar, nComparaciones, indiceEncontrado);
 							break;
 					}
 				}

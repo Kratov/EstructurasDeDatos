@@ -46,7 +46,19 @@ Busqueda busquedaLineal(const int * vec, const int longitud, const int nBuscar, 
 	return Busqueda::BusquedaLineal;
 }
 
-Busqueda busquedaBinaria(const int * vec, const int longitud, const int nBuscar, int & nComparaciones, int & indiceEncontrado)
+Busqueda busquedaBinaria(const int * vec, const int inicio, const int fin, const int nBuscar, int & nComparaciones, int & indiceEncontrado)
 {
+	int indiceMedio = (inicio + fin) / 2;
+	if (inicio <= fin)
+	{
+		nComparaciones++;
+		int puntoMedio = vec[indiceMedio];
+		if (nBuscar == puntoMedio)
+			indiceEncontrado = indiceMedio;
+		if (nBuscar > puntoMedio)
+			busquedaBinaria(vec, indiceMedio + 1, fin, nBuscar, nComparaciones, indiceEncontrado);
+		else if (nBuscar < puntoMedio)
+			busquedaBinaria(vec, inicio, indiceMedio - 1, nBuscar, nComparaciones, indiceEncontrado);
+	}
 	return Busqueda::BusquedaBinaria;
 }
