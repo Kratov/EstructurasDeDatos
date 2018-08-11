@@ -11,6 +11,13 @@ const char * TiposOrden[] = {
 	"QuickSort2"
 };
 
+const char * TiposBusqueda[] = {
+	"",
+	"Lineal",
+	"Binaria"
+};
+
+
 void mostrarIntercambios(const int nItercambio, const Ordenamiento tipoOrdenamiento)
 {
 	using namespace std;
@@ -37,7 +44,7 @@ Ordenamiento ordenarSeleccionAsc(int * vec, const int n, int * iteraciones)
 		}
 	}
 
-	return Ordenamiento::seleccion;
+	return Ordenamiento::OrdenamientoSeleccion;
 }
 
 Ordenamiento ordenarBurbujaAsc(int * vec, const int n, int * iteraciones)
@@ -62,7 +69,7 @@ Ordenamiento ordenarBurbujaAsc(int * vec, const int n, int * iteraciones)
 		}
 	}
 
-	return Ordenamiento::burbuja;
+	return Ordenamiento::OrdenamientoBurbuja;
 }
 
 Ordenamiento ordenarShellAsc(int * vec, const int n, int * iteraciones)
@@ -87,7 +94,7 @@ Ordenamiento ordenarShellAsc(int * vec, const int n, int * iteraciones)
 		}
 	}
 
-	return Ordenamiento::shell;
+	return Ordenamiento::OrdenamientoShell;
 }
 
 Ordenamiento ordenarQuickSortAsc(int * vec, const int inicio, const int fin, int * iteraciones)
@@ -117,7 +124,7 @@ Ordenamiento ordenarQuickSortAsc(int * vec, const int inicio, const int fin, int
 		ordenarQuickSortAsc(vec, pIndice + 1, fin, iteraciones);
 		
 	}
-	return Ordenamiento::quicksort;
+	return Ordenamiento::OrdenamientoQuicksort;
 }
 
 Ordenamiento ordenarQuickSortAsc2(int* vec, const int inicio, const int fin, int * iteraciones)
@@ -149,6 +156,6 @@ Ordenamiento ordenarQuickSortAsc2(int* vec, const int inicio, const int fin, int
 	if (i < fin)
 		ordenarQuickSortAsc2(vec, i, fin, iteraciones);
 
-	return Ordenamiento::quicksort2;
+	return Ordenamiento::OrdenamientoQuicksort2;
 }
 

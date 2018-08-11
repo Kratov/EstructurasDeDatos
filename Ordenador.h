@@ -2,13 +2,21 @@
 
 enum Ordenamiento
 {
-	ninguno,
-	burbuja,
-	seleccion,
-	shell,
-	quicksort,
-	quicksort2
+	OrdenamientoNinguno,
+	OrdenamientoBurbuja,
+	OrdenamientoSeleccion,
+	OrdenamientoShell,
+	OrdenamientoQuicksort,
+	OrdenamientoQuicksort2
 };
+
+enum Busqueda
+{
+	BusquedaNinguno,
+	BusquedaLineal,
+	BusquedaBinaria
+};
+
 
 void mostrarIntercambios(const int nItercambio, const Ordenamiento tipoOrdenamiento);
 Ordenamiento ordenarSeleccionAsc(int * vec, const int n, int * iteraciones);
