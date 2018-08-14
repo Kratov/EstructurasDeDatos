@@ -229,7 +229,7 @@ int main(int argc, char * argv[])
 					switch (op = menuBusqueda())
 					{
 						case 1:
-							ultimaBusquedaExe = busquedaLineal(cVector, longitud, elemetoBuscar, nComparaciones, indiceEncontrado);
+							ultimaBusquedaExe = busquedaLineal(cVector, (longitud - 1), elemetoBuscar, nComparaciones, indiceEncontrado);
 							break;
 						case 2:
 							ultimoOrdenameintoExe = ordenarQuickSortAsc2(cVector, 0, (longitud - 1), &intercambios);

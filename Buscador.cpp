@@ -43,6 +43,14 @@ void mostrarNumeroComparaciones(const int nComparaciones, const Busqueda tipoBus
 
 Busqueda busquedaLineal(const int * vec, const int longitud, const int nBuscar, int & nComparaciones, int & indiceEncontrado)
 {
+
+	for (int i = 0; i <= longitud; i++)	
+		if (vec[i] == nBuscar) 		 
+			indiceEncontrado = i;
+	
+
+	 
+		
 	return Busqueda::BusquedaLineal;
 }
 
