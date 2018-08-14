@@ -45,8 +45,12 @@ Busqueda busquedaLineal(const int * vec, const int longitud, const int nBuscar, 
 {
 
 	for (int i = 0; i <= longitud; i++)	
-		if (vec[i] == nBuscar) 		 
+		if (vec[i] == nBuscar)
+		{
+			nComparaciones++;
 			indiceEncontrado = i;
+		}
+		
 	
 
 	 
